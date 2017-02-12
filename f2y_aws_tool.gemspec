@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["nakedmoon"]
   spec.email         = ["tore.andrea@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Fit2You Aws Tool.}
+  spec.description   = %q{Fit2You Aws Tool.}
+  spec.homepage      = ""
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -32,4 +32,12 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
+
+  # Custom gemspecs
+  spec.add_development_dependency "rspec", "~> 3.5"
+  spec.add_development_dependency "byebug", "~> 9.0"
+  spec.add_runtime_dependency "log4r", "~> 1.1"
+  spec.add_runtime_dependency "thor", "~> 0.19"
+  spec.add_runtime_dependency "aws-sdk", "~> 2.7"
+
 end

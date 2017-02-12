@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "f2y_aws_tool"
+require 'thor'
+
+class F2yAwsToolCli < Thor
+  method_option :stack_id, aliases: "-s", desc: "Opsworks stack Id", required: true, type: :string
+  method_option :app_id, aliases: "-a", desc: "Opsworks app Id", required: true, type: :string
+  method_option :wait, aliases: "-w", desc: "Wait until deploy is completed", type: :boolean, default: true
+  method_option :migrate, aliases: "-m", desc: "Migrate database", type: :boolean, default: true
+  method_option :access_key_id, aliases: "-k", desc: "Access Key Id", type: :string, default: ENV['AWS_ACCESS_KEY_ID']
+  method_option :secret_access_key, aliases: "-p", desc: "Secret Access Key", type: :string, default: ENV['AWS_SECRET_ACCESS_KEY']
+  method_option :log_level, aliases: "-l", desc: "Log level", type: :string, default: 'INFO', enum: ['DEBUG', 'INFO', 'ERROR']
+  method_option :log_aws, aliases: "-s", type: :boolean, default: false
+
+  desc "deploy", "Deploy Opsworks App"
+  def deploy
+    deploy_run = F2yAwsTool::Deploy.new(options).run
+    exit(1) unless [:running, :successful].include?(deploy_run.fetch(:status))
+  end
+
+end
+
+F2yAwsToolCli::start
