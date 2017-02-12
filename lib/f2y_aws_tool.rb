@@ -2,8 +2,8 @@ require 'aws-sdk'
 require 'yaml'
 require 'log4r'
 
-require "f2y_aws_tool/version"
-require "f2y_aws_tool/deploy"
+require_relative "./f2y_aws_tool/version"
+require_relative "./f2y_aws_tool/deploy"
 
 module F2yAwsTool
   extend self
