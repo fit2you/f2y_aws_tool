@@ -1,5 +1,4 @@
 require 'aws-sdk'
-require 'byebug'
 require 'yaml'
 require 'log4r'
 
