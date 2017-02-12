@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["nakedmoon"]
   spec.email         = ["tore.andrea@gmail.com"]
 
-  spec.summary       = %q{Fit2You Aws Tool.}
-  spec.description   = %q{Fit2You Aws Tool.}
-  spec.homepage      = ""
+  spec.summary       = %q{F2Y Aws Tool.}
+  spec.description   = %q{Fit2You Amazon Web Services Tool.}
+  spec.homepage      = "http://www.fit2you.it"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
-  spec.bindir        = "exe"
+  spec.bindir        = "bin"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
@@ -39,5 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "log4r", "~> 1.1"
   spec.add_runtime_dependency "thor", "~> 0.19"
   spec.add_runtime_dependency "aws-sdk", "~> 2.7"
+  spec.executables << "f2y-aws-tool"
 
 end
