@@ -4,11 +4,9 @@ require_relative '../lib/f2y_aws_tool'
 require 'thor'
 
 class F2yAwsToolCli < Thor
-  method_option :target, desc: "Opsworks Target", type: :hash, banner: "stack_id:STACK app_id:APP_ID"
-
+  method_option :target, desc: "Opsworks Target", type: :hash, banner: "stack_id:STACK app_id:APP_ID region:REGION or file:config.yml"
   method_option :access_key_id, desc: "AWS Access Key Id", type: :string, default: ENV['AWS_ACCESS_KEY_ID']
   method_option :secret_access_key, desc: "AWS Secret Access Key", type: :string, default: ENV['AWS_SECRET_ACCESS_KEY']
-  method_option :region, desc: "AWS Opsworks Region", required: false, type: :string
 
   method_option :wait, desc: "Wait until deploy is completed", type: :boolean, default: true
   method_option :migrate, desc: "Migrate database", type: :boolean, default: true

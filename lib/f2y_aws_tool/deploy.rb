@@ -51,7 +51,7 @@ module F2yAwsTool
     end
 
     def region
-      @region ||= @options.fetch(:region){ENV.fetch('AWS_REGION')}
+      @region ||= config.fetch(:region){ENV.fetch('AWS_REGION')}
     end
 
     def migrate?

@@ -6,7 +6,7 @@ describe F2yAwsTool::Deploy do
     {
         wait: false,
         migrate: true,
-        target: {stack_id: "stack_id", app_id: "app_id"},
+        target: {stack_id: "stack_id", app_id: "app_id", region: "region"},
         log_level: 'ERROR',
         log_aws: false
     }
@@ -14,8 +14,7 @@ describe F2yAwsTool::Deploy do
   let(:credentials){
     {
         access_key_id: "access_key_id",
-        secret_access_key: "secret_access_key",
-        region: "region"
+        secret_access_key: "secret_access_key"
     }
   }
 
@@ -37,7 +36,7 @@ describe F2yAwsTool::Deploy do
   it "should use ENV credentials if missing access_key_id and secret_access_key" do
     ENV['AWS_ACCESS_KEY_ID'] = credentials.fetch(:access_key_id)
     ENV['AWS_SECRET_ACCESS_KEY'] = credentials.fetch(:secret_access_key)
-    ENV['AWS_REGION'] = credentials.fetch(:region)
+    ENV['AWS_REGION'] = options.fetch(:target).delete(:region)
     expect(F2yAwsTool::Deploy.new(options).run).to eq(deployment_id: "deployment_id", status: :running)
   end
 
