@@ -40,5 +40,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "thor", "0.19.4"
   spec.add_runtime_dependency "aws-sdk", "2.7.7"
   spec.executables << "f2y-aws-tool"
+  spec.add_runtime_dependency "activesupport", "5.0.1"
 
 end

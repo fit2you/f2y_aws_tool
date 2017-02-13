@@ -1,11 +1,15 @@
 require 'aws-sdk'
 require 'yaml'
 require 'log4r'
+require "active_support/hash_with_indifferent_access"
 
 require_relative "./f2y_aws_tool/version"
 require_relative "./f2y_aws_tool/deploy"
 
 module F2yAwsTool
+
+  class MissingAwsCredentials < StandardError; end
+
   extend self
 
   include Log4r
@@ -18,7 +22,7 @@ module F2yAwsTool
   end
 
   def log_format
-    @log_format ||= Log4r::PatternFormatter.new(:pattern => "[%l] %d :: %m", :date_pattern => "%a %d %b %H:%M %p %Y")
+    @log_format ||= Log4r::PatternFormatter.new(:pattern => "F2Y-AWS-TOOL::%l %d :: %m", :date_pattern => "%a %d %b %H:%M %p %Y")
   end
 
   # Your code goes here...

@@ -2,17 +2,21 @@
 require "bundler/setup"
 require_relative '../lib/f2y_aws_tool'
 require 'thor'
+require 'byebug'
 
 class F2yAwsToolCli < Thor
-  method_option :stack_id, aliases: "-s", desc: "AWS Opsworks Stack Id", required: true, type: :string
-  method_option :app_id, aliases: "-a", desc: "AWS Opsworks App Id", required: true, type: :string
-  method_option :region, aliases: "-r", desc: "AWS Opsworks Region", required: true, type: :string
-  method_option :wait, aliases: "-w", desc: "Wait until deploy is completed", type: :boolean, default: true
-  method_option :migrate, aliases: "-m", desc: "Migrate database", type: :boolean, default: true
-  method_option :access_key_id, aliases: "-k", desc: "AWS Access Key Id", type: :string, default: ENV['AWS_ACCESS_KEY_ID']
-  method_option :secret_access_key, aliases: "-p", desc: "AWS Secret Access Key", type: :string, default: ENV['AWS_SECRET_ACCESS_KEY']
-  method_option :log_level, aliases: "-l", desc: "Log level", type: :string, default: 'INFO', enum: ['DEBUG', 'INFO', 'ERROR']
-  method_option :log_aws, aliases: "-s", desc: "Enable AWS Log", type: :boolean, default: false
+  method_option :target, desc: "Opsworks Target", type: :hash
+
+  method_option :access_key_id, desc: "AWS Access Key Id", type: :string, default: ENV['AWS_ACCESS_KEY_ID']
+  method_option :secret_access_key, desc: "AWS Secret Access Key", type: :string, default: ENV['AWS_SECRET_ACCESS_KEY']
+  method_option :region, desc: "AWS Opsworks Region", required: false, type: :string
+
+  method_option :wait, desc: "Wait until deploy is completed", type: :boolean, default: true
+  method_option :migrate, desc: "Migrate database", type: :boolean, default: true
+  method_option :log_level, desc: "Log level", type: :string, default: 'INFO', enum: ['DEBUG', 'INFO', 'ERROR']
+  method_option :log_aws, desc: "Enable AWS Log", type: :boolean, default: false
+
+
 
   desc "deploy", "Deploy Opsworks App"
   def deploy

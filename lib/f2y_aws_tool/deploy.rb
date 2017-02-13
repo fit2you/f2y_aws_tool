@@ -43,11 +43,11 @@ module F2yAwsTool
     end
 
     def stack_id
-      @stack_id ||= @options.fetch(:stack_id)
+      @stack_id ||= config.fetch(:stack_id)
     end
 
     def app_id
-      @app_id ||= @options.fetch(:app_id)
+      @app_id ||= config.fetch(:app_id)
     end
 
     def region
@@ -91,6 +91,19 @@ module F2yAwsTool
           }
       )
     end
+
+    def target
+      @target ||= HashWithIndifferentAccess.new(@options.fetch(:target))
+    end
+
+    def config
+      @config ||= begin
+        HashWithIndifferentAccess.new(YAML.load(File.read(target.fetch(:file))))
+      rescue KeyError
+        target
+      end
+    end
+
 
 
   end
