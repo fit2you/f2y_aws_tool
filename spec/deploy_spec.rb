@@ -5,6 +5,7 @@ describe F2yAwsTool::Deploy do
   let(:options) {
     {
         wait: false,
+        region: 'region',
         migrate: true,
         stack_id: "stack_id",
         app_id: "app_id",

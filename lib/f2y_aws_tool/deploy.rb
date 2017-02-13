@@ -19,6 +19,7 @@ module F2yAwsTool
 
     def client
       @client ||= Aws::OpsWorks::Client.new(
+          region: region,
           access_key_id: access_key_id,
           secret_access_key: secret_access_key,
           logger: aws_logger,
@@ -47,6 +48,10 @@ module F2yAwsTool
 
     def app_id
       @app_id ||= @options.fetch(:app_id)
+    end
+
+    def region
+      @region ||= @options.fetch(:region){ENV.fetch('AWS_REGION')}
     end
 
     def migrate?
