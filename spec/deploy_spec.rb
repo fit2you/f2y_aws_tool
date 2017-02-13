@@ -1,5 +1,4 @@
 require 'f2y_aws_tool'
-require 'byebug'
 
 describe F2yAwsTool::Deploy do
 
