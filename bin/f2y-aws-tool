@@ -12,8 +12,7 @@ class F2yAwsToolCli < Thor
   method_option :migrate, desc: "Migrate database", type: :boolean, default: true
   method_option :log_level, desc: "Log level", type: :string, default: 'INFO', enum: ['DEBUG', 'INFO', 'ERROR']
   method_option :log_aws, desc: "Enable AWS Log", type: :boolean, default: false
-
-
+  method_option :comment, desc: "Comment", type: :string, default: "F2Y-AWS-TOOL"
 
   desc "deploy", "Deploy Opsworks App"
   def deploy

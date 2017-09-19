@@ -66,6 +66,10 @@ module F2yAwsTool
       @log_level ||= @options.fetch(:log_level)
     end
 
+    def comment
+      @comment ||= @options.fetch(:comment)
+    end
+
     def aws_logger
       @log_aws ||= @options.fetch(:log_aws) ? log : nil
     end
@@ -87,7 +91,7 @@ module F2yAwsTool
                   name: "deploy",
                   args: {"migrate" => ["#{migrate?}"]},
               },
-              comment: "CodeShip Deploy"
+              comment: comment
           }
       )
     end

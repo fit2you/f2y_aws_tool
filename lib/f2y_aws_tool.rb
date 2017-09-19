@@ -25,5 +25,4 @@ module F2yAwsTool
     @log_format ||= Log4r::PatternFormatter.new(:pattern => "F2Y-AWS-TOOL::%l %d :: %m", :date_pattern => "%a %d %b %H:%M %p %Y")
   end
 
-  # Your code goes here...
 end
