@@ -8,7 +8,8 @@ describe F2yAwsTool::Deploy do
         migrate: true,
         target: {stack_id: "stack_id", app_id: "app_id", region: "region"},
         log_level: 'ERROR',
-        log_aws: false
+        log_aws: false,
+        comment: 'A Comment'
     }
   }
   let(:credentials){
