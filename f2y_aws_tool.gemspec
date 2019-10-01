@@ -37,9 +37,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "3.5.0"
   spec.add_development_dependency "byebug", "9.0.6"
   spec.add_runtime_dependency "log4r", "1.1.10"
-  spec.add_runtime_dependency "thor", "0.19.4"
+  spec.add_runtime_dependency "thor", "< 2.0"
   spec.add_runtime_dependency "aws-sdk", "~> 2"
   spec.executables << "f2y-aws-tool"
-  spec.add_runtime_dependency "activesupport", "~> 4.2"
+  spec.add_runtime_dependency "activesupport", "<= 5.2.3"
 
 end
