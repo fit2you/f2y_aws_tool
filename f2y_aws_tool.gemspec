@@ -41,5 +41,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "aws-sdk", ">= 3.1"
   spec.add_runtime_dependency "nokogiri", "~> 1.15.4"
   spec.executables << "f2y-aws-tool"
-  spec.add_runtime_dependency "activesupport", ">= 4.2", "<= 8"
+  spec.add_runtime_dependency "activesupport", ">= 4.2", "< 7.1"
 end
